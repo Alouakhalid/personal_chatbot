@@ -15,7 +15,7 @@ nltk.download('wordnet')
 
 lemmatizer = WordNetLemmatizer()
 
-with open('data/intents.json') as file:
+with open('intents.json') as file:
     intents = json.load(file)
 
 words = []
@@ -35,8 +35,8 @@ words = [lemmatizer.lemmatize(w.lower()) for w in words if w not in ignor_words]
 words = sorted(set(words))
 classes = sorted(set(classes))
 
-pickle.dump(words, open('data/words.pkl', 'wb'))
-pickle.dump(classes, open('data/classes.pkl', 'wb'))
+pickle.dump(words, open('words.pkl', 'wb'))
+pickle.dump(classes, open('classes.pkl', 'wb'))
 
 training = []
 output_empty = [0] * len(classes)
@@ -70,5 +70,5 @@ model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['ac
 hist = model.fit(x_train, y_train, epochs=200, batch_size=5, verbose=1)
 loss, accuracy = model.evaluate(x_train, y_train, verbose=0)
 print(f"Model Loss: {loss:.4f}, Model Accuracy: {accuracy:.4f}")
-model.save('data/chatbot_model.h5',hist)
+model.save('chatbot_model.h5',hist)
 print("✅ Model trained and saved successfully.")
