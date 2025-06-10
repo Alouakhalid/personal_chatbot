@@ -8,12 +8,12 @@ import random
 
 
 lemmarizer =WordNetLemmatizer()
-intents = json.load(open('data/intents.json'))
+intents = json.load(open('intents.json'))
 
-word = pickle.load(open('data/words.pkl', 'rb'))
-classes = pickle.load(open('data/classes.pkl', 'rb'))
+word = pickle.load(open('words.pkl', 'rb'))
+classes = pickle.load(open('classes.pkl', 'rb'))
 
-model = load_model('data/chatbot_model.h5')
+model = load_model('chatbot_model.h5')
 
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
