@@ -15,7 +15,7 @@ with open('data/intents.json') as f:
 
 
 def store_new_intent(pattern, response):
-    new_intents_path = "data/intents.json"
+    new_intents_path = "intents.json"
 
     if not os.path.exists(new_intents_path):
         with open(new_intents_path, "w") as f:
